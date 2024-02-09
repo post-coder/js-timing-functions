@@ -1,29 +1,27 @@
 
 
-// voglio scrivere ogni secondo la stringa "tick" in console
+const timerElement = document.querySelector("#timer");
 
-// questa funzione verrà chiamata ogni tot ALL'INFINITO
-const tickContinuo = setInterval(tick, 1000);
 
+
+const clock = setInterval(countEverySecond, 1000);
+
+let seconds = 0;
+timerElement.innerText = seconds + " secondi";
+
+function countEverySecond() {
+    seconds++;
+
+    timerElement.innerText = seconds + " secondi";
+
+
+    if(seconds > 60) {
+        seconds = 0;
+    }
+
+}
 
 
 document.querySelector("button").addEventListener("click", function() {
-
-    // blocchiamo il setInterval
-    // per bloccare un setInterval ci basta memorizzarlo inizialmente in una variabile
-    // e poi inserire quella variabile come argomento della funzione "clearInterval"
-    clearInterval(tickContinuo);
-
-});
-
-
-function tick() {
-
-    console.log("tick");
-
-}
-
-
-function tock() {
-    console.log("tock");
-}
+    clearInterval(clock);
+})
